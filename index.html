@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MyCaptcha v3.0 Real - 本物そっくり画像パズル</title>
+<link rel="stylesheet" href="./mycaptcha.css">
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--primary:#4a90e2}
+*{box-sizing:border-box} body{font-family:"Noto Sans JP",sans-serif;background:var(--bg);margin:0;padding:20px;color:var(--text)}
+.card{background:var(--card);border-radius:16px;padding:24px;max-width:1100px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,.06);border:1px solid var(--border)}
+.grid{display:grid;grid-template-columns:340px 1fr;gap:24px} @media(max-width:900px){.grid{grid-template-columns:1fr}}
+.demo-box{background:#fbfdff;border:1px dashed #cbd5e1;border-radius:12px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.debug{background:#0f172a;color:#e2e8f0;border-radius:12px;padding:14px;font-family:monospace;font-size:11px}
+.row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #1e293b}
+.bar{height:5px;background:#1e293b;border-radius:3px;overflow:hidden;margin-top:3px}
+.bar-fill{height:100%;background:var(--primary);transition:width .2s}
+.score-big{font-size:32px;font-weight:800;text-align:center}
+.badge{display:inline-block;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700}
+.badge.human{background:#dcfce7;color:#166534}.badge.suspicious{background:#fef9c3;color:#854d0e}.badge.bot{background:#fee2e2;color:#991b1b}
+pre{background:#0f172a;color:#e2e8f0;padding:12px;border-radius:8px;overflow:auto;font-size:11px}
+canvas{width:100%;height:70px;background:#1e293b;border-radius:6px}
+.token{word-break:break-all;background:#f8fafc;border:1px solid var(--border);border-radius:6px;padding:8px;font-family:monospace;font-size:10px}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>🛡️ MyCaptcha v3.0 Real - 本物そっくり版</h1>
+<p style="color:var(--muted);font-size:13px">絵文字ではなく本物の写真で出題。Google reCAPTCHA v2と見た目も挙動も同じ。</p>
+<div class="grid">
+<div>
+<h3>デモ（メール欄なし）</h3>
+<div class="demo-box">
+<div id="demo-captcha"></div>
+<div id="status" style="font-size:12px;color:var(--muted)">チェックを押してください</div>
+<div id="token" class="token" style="display:none"></div>
+<button onclick="myCaptcha.reset()" style="margin-top:8px;padding:6px 12px;border:1px solid var(--border);border-radius:6px;background:#fff;cursor:pointer">リセット</button>
+</div>
+<p style="font-size:11px;color:var(--muted);margin-top:12px">※ 画像は生成したリアル写真を使用。GitHub Pagesでは /images/ フォルダに入れて配信</p>
+</div>
+<div>
+<h3>リアルタイム計測</h3>
+<div class="debug" id="debug">計測中...</div>
+<canvas id="trail" width="560" height="140"></canvas>
+<h3 style="margin-top:14px">埋め込み</h3>
+<pre>&lt;link rel="stylesheet" href="https://YOURNAME.github.io/mycaptcha/mycaptcha.css"&gt;
+&lt;div id="my-captcha"&gt;&lt;/div&gt;
+&lt;script src="https://YOURNAME.github.io/mycaptcha/mycaptcha.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+myCaptcha.render('my-captcha',{callback:(t,i)=>console.log(t,i.score)});
+&lt;/script&gt;</pre>
+</div>
+</div>
+</div>
+<script src="./mycaptcha.js"></script>
+<script>
+const canvas=document.getElementById('trail'), ctx=canvas.getContext('2d');
+function drawTrail(pos){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  if(!pos||pos.length<2) return;
+  const xs=pos.map(p=>p.x), ys=pos.map(p=>p.y);
+  const minX=Math.min(...xs), maxX=Math.max(...xs), minY=Math.min(...ys), maxY=Math.max(...ys);
+  const pad=8, w=canvas.width-pad*2, h=canvas.height-pad*2;
+  const sx=(maxX-minX)>0?w/(maxX-minX):1, sy=(maxY-minY)>0?h/(maxY-minY):1, sc=Math.min(sx,sy);
+  ctx.strokeStyle='#4a90e2'; ctx.lineWidth=2; ctx.beginPath();
+  pos.forEach((p,i)=>{ const x=pad+(p.x-minX)*sc, y=pad+(p.y-minY)*sc; if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); }); ctx.stroke();
+}
+function renderDebug(){
+  const d=myCaptcha.getDetailed(); if(!d) return;
+  const cls=d.score>=0.6?'human':d.score>=0.3?'suspicious':'bot';
+  document.getElementById('debug').innerHTML=`
+    <div class="score-big" style="color:${d.score>=0.6?'#22c55e':d.score>=0.3?'#eab308':'#ef4444'}">${d.score.toFixed(3)}</div>
+    <div style="text-align:center"><span class="badge ${cls}">${d.classification}</span></div>
+    <div class="row"><span>マウス 35%</span><span>${d.breakdown.mouse.toFixed(2)}</span></div><div class="bar"><div class="bar-fill" style="width:${d.breakdown.mouse*100}%"></div></div>
+    <div class="row"><span>時間 20%</span><span>${d.breakdown.time.toFixed(2)}</span></div><div class="bar"><div class="bar-fill" style="width:${d.breakdown.time*100}%"></div></div>
+    <div class="row"><span>ブラウザ 25%</span><span>${d.breakdown.browser.toFixed(2)}</span></div><div class="bar"><div class="bar-fill" style="width:${d.breakdown.browser*100}%"></div></div>
+    <div class="row"><span>操作 20%</span><span>${d.breakdown.interaction.toFixed(2)}</span></div><div class="bar"><div class="bar-fill" style="width:${d.breakdown.interaction*100}%"></div></div>
+    <div style="margin-top:8px"><div class="row"><span>移動</span><span>${d.raw.distance}px/${d.raw.moves}</span></div><div class="row"><span>直線/テレポ</span><span>${d.raw.maxStraight}/${d.raw.teleports}</span></div><div class="row"><span>滞在</span><span>${d.raw.timeOnPage}s</span></div></div>
+    ${d.reasons.length? `<div style="color:#fbbf24;margin-top:6px">⚠️ ${d.reasons.slice(0,3).join('<br>⚠️ ')}</div>`:`<div style="color:#4ade80;margin-top:6px">✅ 不審なし</div>`}
+  `;
+  drawTrail(d.raw.positions);
+}
+myCaptcha.render('demo-captcha',{callback:(token,info)=>{ document.getElementById('status').innerHTML=`✅ 成功 <span class="badge human">${info.classification}</span>`; const tb=document.getElementById('token'); tb.style.display='block'; tb.textContent=token; }});
+setInterval(renderDebug,200);
+</script>
+</body>
+</html>
