@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+<defs><linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#AED6F1"/><stop offset="100%" stop-color="#FDEBD0"/></linearGradient></defs>
+<rect width="400" height="400" fill="url(#sky2)"/>
+<rect x="0" y="310" width="400" height="90" fill="#4A4A4A"/><rect x="0" y="310" width="400" height="5" fill="#F1C40F"/>
+<rect x="20" y="90" width="60" height="220" fill="#A569BD"/><rect x="320" y="90" width="60" height="220" fill="#A569BD"/>
+<!-- Side bus -->
+<rect x="35" y="130" width="330" height="150" rx="16" fill="#FFFFFF" stroke="#1A5276" stroke-width="3"/>
+<rect x="35" y="130" width="330" height="18" fill="#2874A6"/>
+<rect x="50" y="160" width="55" height="65" rx="4" fill="#1A2A3A"/><rect x="55" y="165" width="45" height="55" fill="#AED6F1"/>
+<rect x="115" y="160" width="55" height="65" rx="4" fill="#1A2A3A"/><rect x="120" y="165" width="45" height="55" fill="#AED6F1"/>
+<rect x="180" y="160" width="55" height="65" rx="4" fill="#1A2A3A"/><rect x="185" y="165" width="45" height="55" fill="#AED6F1"/>
+<rect x="245" y="160" width="55" height="65" rx="4" fill="#1A2A3A"/><rect x="250" y="165" width="45" height="55" fill="#AED6F1"/>
+<rect x="310" y="160" width="40" height="65" rx="4" fill="#1A2A3A"/><rect x="315" y="165" width="30" height="55" fill="#AED6F1"/>
+<rect x="35" y="235" width="330" height="30" fill="#2874A6"/><text x="200" y="256" text-anchor="middle" fill="white" font-family="Arial" font-size="16" font-weight="bold">CITY BUS  •  MTA</text>
+<circle cx="90" cy="285" r="30" fill="#1A1A1A"/><circle cx="90" cy="285" r="13" fill="#D5D8DC"/><circle cx="310" cy="285" r="30" fill="#1A1A1A"/><circle cx="310" cy="285" r="13" fill="#D5D8DC"/>
+<rect x="15" y="220" width="20" height="8" fill="#F39C12"/><rect x="365" y="220" width="20" height="8" fill="#E74C3C"/>
+</svg>

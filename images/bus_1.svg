@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#87CEEB"/><stop offset="100%" stop-color="#E0F6FF"/></linearGradient><linearGradient id="busBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#D6EAF8"/></linearGradient></defs>
+<rect width="400" height="400" fill="url(#sky)"/>
+<rect x="0" y="300" width="400" height="100" fill="#3A3A3A"/><rect x="0" y="300" width="400" height="6" fill="#FFD700"/>
+<rect x="20" y="40" width="30" height="260" fill="#8B7355"/><rect x="350" y="40" width="30" height="260" fill="#8B7355"/>
+<rect x="20" y="40" width="360" height="80" fill="#C0392B" opacity="0.9"/><rect x="20" y="120" width="360" height="40" fill="#2E86C1"/>
+<!-- Bus front -->
+<rect x="55" y="110" width="290" height="185" rx="18" fill="url(#busBody)" stroke="#1A5276" stroke-width="3"/>
+<rect x="55" y="110" width="290" height="45" rx="18" fill="#1A5276"/>
+<text x="200" y="143" text-anchor="middle" fill="#F9E79F" font-family="Arial" font-size="28" font-weight="bold">23 • DOWNTOWN</text>
+<rect x="75" y="175" width="110" height="75" rx="6" fill="#1A2A3A"/><rect x="82" y="182" width="96" height="60" rx="4" fill="#AED6F1" opacity="0.9"/>
+<rect x="215" y="175" width="110" height="75" rx="6" fill="#1A2A3A"/><rect x="222" y="182" width="96" height="60" rx="4" fill="#AED6F1" opacity="0.9"/>
+<circle cx="130" cy="215" r="8" fill="#5D6D7E"/><circle cx="270" cy="215" r="8" fill="#5D6D7E"/>
+<rect x="70" y="260" width="260" height="6" fill="#2874A6"/><rect x="95" y="272" width="30" height="8" fill="#F9E79F"/><rect x="275" y="272" width="30" height="8" fill="#F9E79F"/>
+<rect x="60" y="125" width="20" height="10" rx="3" fill="#F39C12"/><rect x="320" y="125" width="20" height="10" rx="3" fill="#F39C12"/>
+<text x="200" y="285" text-anchor="middle" fill="#1A5276" font-family="Arial" font-size="14" font-weight="bold">4217  MTA</text>
+<circle cx="110" cy="295" r="28" fill="#1A1A1A"/><circle cx="110" cy="295" r="12" fill="#BDC3C7"/><circle cx="290" cy="295" r="28" fill="#1A1A1A"/><circle cx="290" cy="295" r="12" fill="#BDC3C7"/>
+<rect x="0" y="330" width="400" height="12" fill="#FFFFFF" opacity="0.8"/>
+</svg>

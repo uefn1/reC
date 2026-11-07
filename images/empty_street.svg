@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+<defs><linearGradient id="skyE" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#AED6F1"/><stop offset="100%" stop-color="#FEF9E7"/></linearGradient></defs>
+<rect width="400" height="400" fill="url(#skyE)"/>
+<!-- Buildings -->
+<rect x="0" y="60" width="110" height="240" fill="#D5B895"/><rect x="10" y="80" width="25" height="30" fill="#FDEBD0"/><rect x="45" y="80" width="25" height="30" fill="#FDEBD0"/><rect x="80" y="80" width="25" height="30" fill="#FDEBD0"/><rect x="10" y="130" width="25" height="30" fill="#FDEBD0"/><rect x="45" y="130" width="25" height="30" fill="#AED6F1"/><rect x="80" y="130" width="25" height="30" fill="#FDEBD0"/>
+<rect x="290" y="60" width="110" height="240" fill="#A9CCE3"/><rect x="300" y="80" width="25" height="30" fill="#FDEBD0"/><rect x="335" y="80" width="25" height="30" fill="#FDEBD0"/><rect x="370" y="80" width="25" height="30" fill="#FDEBD0"/><rect x="300" y="130" width="25" height="30" fill="#FDEBD0"/><rect x="335" y="130" width="25" height="30" fill="#FDEBD0"/>
+<!-- Trees -->
+<circle cx="130" cy="200" r="28" fill="#27AE60"/><rect x="125" y="220" width="10" height="60" fill="#6E4B2A"/>
+<circle cx="270" cy="200" r="28" fill="#2ECC71"/><rect x="265" y="220" width="10" height="60" fill="#6E4B2A"/>
+<!-- Street -->
+<rect x="0" y="300" width="400" height="100" fill="#5D6D7E"/><rect x="0" y="300" width="400" height="6" fill="#F1C40F"/>
+<rect x="190" y="320" width="20" height="8" fill="#FDFEFE" opacity="0.8"/><rect x="190" y="350" width="20" height="8" fill="#FDFEFE" opacity="0.8"/><rect x="190" y="380" width="20" height="8" fill="#FDFEFE" opacity="0.8"/>
+<!-- Sidewalk -->
+<rect x="0" y="280" width="400" height="20" fill="#BDC3C7"/>
+<!-- Benches -->
+<rect x="40" y="260" width="50" height="10" fill="#6E4B2A"/><rect x="310" y="260" width="50" height="10" fill="#6E4B2A"/>
+<text x="200" y="40" text-anchor="middle" fill="#2C3E50" font-family="Arial" font-size="14" font-weight="bold">静かな街並み - 車なし</text>
+</svg>
